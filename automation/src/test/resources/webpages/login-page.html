@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login Page</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body class="loginBody">
+    <table class="box">
+    <tr>
+    <td>
+        
+        <br><br>
+        <input style="border: solid black" type="text" placeholder="Username" id="Username" class="Password">
+        <br><br>
+        <input style="border: solid black" type="password" placeholder="Password" id="Password" class="Password">
+        <br><br>
+        <button onclick="login()" id="loginButton" class="loginButton"><strong>LOGIN</strong></button>
+    </td> 
+    </tr>
+    
+    </table>
+    
+    
+</body>
+<script>
+        async function login(){
+            let loginInfo = {
+                username: document.getElementById('Username').value,
+                password: document.getElementById('Password').value   
+            }
+            let loginJSON = JSON.stringify(loginInfo);
+
+            let config = {
+                method:"PATCH",
+                headers:{'Content-Type':"application/json"}, 
+                body: loginJSON 
+            }
+
+            let httpResponse = await fetch("https://bugcatcher.coe.revaturelabs.com/7/login", config);
+            
+            if(httpResponse.status === 200){
+                let responseBody = await httpResponse.json();
+
+                if(responseBody.username === "Voldemort"){
+                    window.location.href = "manager-page.html"
+                } else if (responseBody.username === "Dolores"){
+                    window.location.href = "dolores-umbridges.html"
+                } else if (responseBody.username === "Lucius"){
+                    window.location.href = "lucius-malfoy.html"
+                } else if (responseBody.username === "Bellatrix"){
+                    window.location.href = "bellatrix-lestrange.html"
+                } 
+            } else {
+                    let responseBody = await httpResponse.json();
+                    alert(responseBody.detail);
+            }
+            
+        }
+    
+
+</script>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bellatrix Lestrange</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body class="testerBodyBellatrix">
+
+<table id="defectTable" class="defectTableBellatrix">
+</table>
+
+<table class="extraBellatrix">
+    <tr>
+        <td>
+            
+            <br>
+        
+            <button onclick="showDefect()" type="button" class="insideExtraBellatrix" id="checkDefects">Check for Mission</button> <br>
+            <br>
+            
+            <input type="text" id="defectId" placeholder="Enter defect Id here " class="insideExtraBellatrix">
+            
+            <select name="AR" id="optionAR" class="insideExtraBellatrix">
+                <option value="Accept">Accept</option>
+                <option value="Reject">Reject</option>
+            </select>
+
+            <select name="Action" id="Action" class="insideExtraBellatrix" >
+                <option value="Fixed">Fix</option>
+                <option value="Shelved">Shelve</option>
+                <option value="Rejected">Reject</option>
+            </select>
+            <button onclick="save()" class="insideExtraBellatrix" id="saveButton">Save</button>
+            <br><br>
+            <button onclick="signOut()" class="insideExtraBellatrix">Sign Out</button>
+        </td>
+    </tr>
+</table>   
+
+
+</body>
+<script>
+//Variables
+    const defectIden = document.getElementById("defectId");
+    const optionAR = document.getElementById("optionAR");
+    const Action = document.getElementById("Action");
+    const defectTable = document.getElementById("defectTable");
+   
+// Function to show assigned defect
+    async function showDefect(){  
+           defectTable.innerHTML = "";
+            let config ={
+                method:"GET",
+                headers:{'Content-Type':"application/json"}
+            }
+
+            let httpResponse = await fetch("https://bugcatcher.coe.revaturelabs.com/7/defects",config);
+            console.log(httpResponse);
+        
+            if (httpResponse.status === 200){
+                let responseBody = await httpResponse.json();
+                console.log(responseBody);
+                
+                if (responseBody.length > 0){
+                        
+                    // Create th1
+                        let th1 = document.createElement("th");
+                        th1.textContent = "Assigned Mission";
+                        th1.className ="thBellatrix";
+                        defectTable.appendChild(th1);
+                        
+                    // Create th2
+                        let th2 = document.createElement("th");
+                        th2.textContent = "Mission ID";
+                        th2.className ="thBellatrix";
+                        defectTable.appendChild(th2);
+
+                    // Create th3
+                        let th3 = document.createElement("th");
+                        th3.textContent = "Mission Status";
+                        th3.className ="thBellatrix";
+                        defectTable.appendChild(th3);
+                        
+                    //Go through each object in responseBody array    
+                        for (let object of responseBody){
+                            if(object.assignedTo == "Bellatrix"){
+                        //Create new row
+                            let tableRow = document.createElement("tr");
+                            tableRow.id = "tableRow";
+                            tableRow.className ="tableBellatrix"
+                            defectTable.appendChild(tableRow); 
+
+                        // Defect name            
+                            let defectDesc = document.createElement("td");
+                            defectDesc.id = "defectNameDesc"; 
+                            defectDesc.className = "tableBellatrix";
+                            defectDesc.textContent = object.desc;            
+                            tableRow.appendChild(defectDesc);            
+                        
+                        // Defect ID             
+                            let defectID = document.createElement("td"); 
+                            defectID.id = "defectID";
+                            defectID.className = "tableBellatrix";
+                            defectID.textContent = object.defectId;            
+                            tableRow.appendChild(defectID);            
+                        
+                        // Defect Status            
+                            let defectStatus = document.createElement("td");  
+                            defectStatus.id = "defectStatus";
+                            defectStatus.className = "tableBellatrix";
+                            defectStatus.textContent = object.status;       
+                            tableRow.appendChild(defectStatus);            
+                            } else {
+                                null;
+                            }
+                        
+                        
+                        }
+
+
+
+                }   else {
+                    alert("No Assigned Mission!")
+                }
+            }        
+    }                           
+                      
+            
+    // Function to update defect status using ID
+     async function save(){
+        const defectIden = document.getElementById("defectId");
+    
+        if(optionAR.value === "Accept"){
+        
+         // Change status in API
+            let defectNumber ={
+                status: document.getElementById("Action").value
+            }
+            
+            let defectJSON = JSON.stringify(defectNumber);
+            let config ={
+                method:"PATCH",
+                headers:{'Content-Type':"application/json"},
+                body: defectJSON
+            }
+            let httpResponse = await fetch(`https://bugcatcher.coe.revaturelabs.com/7/defects/${defectIden.value}`,config);
+            console.log(httpResponse);
+            if (httpResponse.status === 200){
+                
+            }           
+            alert("Mission Accomplished!");
+        } else if (optionAR.value == "Reject"){
+            alert("You rejected the mission")
+         // Change defect status on API to rejected 
+            let defectNumber ={
+                status: "Rejected"
+            }
+            
+            let defectJSON = JSON.stringify(defectNumber);
+            let config ={
+                method:"PATCH",
+                headers:{'Content-Type':"application/json"},
+                body: defectJSON
+            }
+            let httpResponse = await fetch(`https://bugcatcher.coe.revaturelabs.com/7/defects/${defectIden.value}`,config);
+            console.log(httpResponse);
+            if (httpResponse.status === 200){
+                let responseBody = await httpResponse.json();
+                }
+            Action.value = "";
+        }
+        showDefect();  
+        
+        
+}
+            
+         function signOut(){
+        window.location.href = "login-page.html"  }                          
+</script>
+</html>

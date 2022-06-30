@@ -1,0 +1,241 @@
+th ,td, tr{
+    padding: 10px;
+    text-align: center;
+    border: solid 2px black;
+}
+
+
+
+
+
+
+
+/* Login CSS */
+
+.loginButton{
+    margin-left: 190px;
+    font-size: 16pt;
+    color: black;
+    background-color: white;
+    border: solid black;
+}
+
+.box {
+    border: 10px solid black;
+    width: 20%;
+    height: 57%;
+    text-align: center;
+    position: fixed;
+    left: 39%;
+    top: 20%;
+    background-color: azure;
+    background-image: url("https://www.wikihow.com/images/3/3c/28149295-08F0-4A7D-AC76-E9148659E575.jpeg");
+    background-size: cover;
+}
+.Username {
+    font-size: 16pt;
+    padding: 10%;
+}
+
+.Password {
+    font-size: 16pt;
+}
+
+.loginBody {
+    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8f1e0724-c9de-48b8-9b10-a4ca0ad5aa7d/d4vy2qu-0dd3f4ac-f1d9-45ff-8617-68f3b3e6a773.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzhmMWUwNzI0LWM5ZGUtNDhiOC05YjEwLWE0Y2EwYWQ1YWE3ZFwvZDR2eTJxdS0wZGQzZjRhYy1mMWQ5LTQ1ZmYtODYxNy02OGYzYjNlNmE3NzMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Vj0oplTXbjlbuMNrONM7QldLqUDBbECOUsraMlb0SCk");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}   
+
+
+
+
+
+
+
+/* Manager CSS */
+.managerBox{
+    font-size: 16pt;
+    text-align: center;
+    
+    border: 3px solid white;
+    width: 500px;
+    margin-top: 10%;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto ;
+    height: 365px;
+    background-color: white;
+    background-image: url("https://qph.cf2.quoracdn.net/main-qimg-8b7bfcd0cdbc5f75f187e474ae71ca37");
+}
+.managerBody{
+    background-image: url("File://C:/Users/duong/Revature/Project1/images/Voldy.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+
+}
+.createDefects{
+    font-size: 16pt;
+}
+
+.testers{
+    font-size: 16pt;
+    border: solid black;
+    width: 59%;
+    text-align: center;
+}
+.assignButton{
+    font-size: 16pt;
+}
+
+
+
+
+
+
+
+
+
+/* Tester CSS */
+/* Umbridges */
+.testerBody{
+    background-image: url("File://C:/Users/duong/Revature/Project1/images/dolores.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+
+.extra{
+    position: fixed;
+    left: 740px;
+    top: 2%;
+    height: 28%;
+    text-align: center;
+    border: 3px solid rgb(235, 86, 110);
+    color: white;
+    
+}
+.insideExtraDolores{
+    font-size: 12pt ; 
+    border: solid 3px rgb(235, 86, 110); 
+    color: rgb(235, 86, 110);
+    
+}
+.thDolores{
+    border:solid 1px rgb(235, 86, 110);
+}
+.tableDolores{
+    border: solid 1px rgb(235, 86, 110);
+}
+.defectTable{
+    text-align: center;
+    margin-top: 280px;
+    margin-bottom: auto;
+    margin-left: 733px;
+    margin-right: auto ;
+    width: 24%;
+    position: center;
+    font-size: 12pt;
+    border: 3px solid rgb(235, 86, 110);
+    color: white;
+}
+
+/* Lucius */
+.testerBodyLucius{
+    background-image: url("File://C:/Users/duong/Revature/Project1/images/lucius.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+.extraLucius{
+    position: fixed;
+    left: 740px;
+    top: 2%;
+    height: 28%;
+    text-align: center;
+    border: 3px solid rgb(71, 70, 70);
+}
+.tableLucius{
+    border: solid 1px rgb(71, 70, 70);
+    color: white;
+}
+
+.defectTableLucius{
+    text-align: center;
+    margin-top: 280px;
+    margin-bottom: auto;
+    margin-left: 733px;
+    margin-right: auto ;
+    width: 24%;
+    position: center;
+    font-size: 12pt;
+    border: 3px solid rgb(71, 70, 70);
+    color: black;
+}
+.insideExtraLucius{
+    font-size: 12pt ; 
+    border: solid 3px rgb(71, 70, 70); 
+    color: rgb(71, 70, 70);
+}
+.thLucius{
+    border: solid 1px rgb(71, 70, 70);
+    color: white;
+}
+
+/* Bellatrix */
+.testerBodyBellatrix{
+    background-image: url("File://C:/Users/duong/Revature/Project1/images/bella.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
+}
+.extraBellatrix{
+    position: fixed;
+    left: 740px;
+    top: 2%;
+    height: 28%;
+    text-align: center;
+    border: 3px solid rgb(4, 92, 4);
+}
+.tableBellatrix{
+    border: solid 1px rgb(4, 92, 4);
+    color: white;
+}
+
+.defectTableBellatrix{
+    text-align: center;
+    margin-top: 280px;
+    margin-bottom: auto;
+    margin-left: 733px;
+    margin-right: auto ;
+    width: 24%;
+    position: center;
+    font-size: 12pt;
+    border: 3px solid rgb(4, 92, 4);
+    color: black;
+}
+.insideExtraBellatrix{
+    font-size: 12pt ; 
+    border: solid 3px rgb(4, 92, 4); 
+    color: rgb(71, 70, 70);
+}
+.thBellatrix{
+    border: solid 1px rgb(4, 92, 4);
+    color: white;
+}
+
+
+
+/* Sign out CSS */
+.signOutButton{
+    font-size: 16pt;
+    margin-left:897px ;
+    
+    
+}

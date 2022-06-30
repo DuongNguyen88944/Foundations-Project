@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lord Voldemort</title>
+</head>
+<link rel="stylesheet" href="style.css">
+<body class="managerBody">
+    
+   
+    <table class="managerBox">
+        <tr>
+            
+    <td>
+    <input style="border: solid black" name="createDefect"type="text" id="createDefects" class="createDefects" placeholder="Enter Mission">
+   <br><br>
+   <select class="testers" name="testers" id="testers" >
+    <option ><strong>Select a DeathEater</strong> </option>
+    <option value="Dolores">Dolores Umbridges</option>
+    <option value="Lucius">Lucius Malfoy</option>
+    <option value="Bellatrix">Bellatrix Lestrange</option>
+   </select>
+   <!-- <input name="testers" type="text" id="testers" class="testers"  placeholder="Enter Tester"> -->
+   <br><br>
+   
+   <button style="border: solid black" id="assignButton" class="assignButton" onclick="assign()"><strong>ASSIGN</strong></button>
+   </td> 
+        </tr>
+
+</table>
+<button class="signOutButton"  onclick="signOut()" ><strong>SIGN OUT</strong></button>
+</body>
+<script>
+   
+// Function to assign defect
+async function assign(){   
+    let defectInfo={
+        
+        defectId: 0,
+        assignedTo: document.getElementById("testers").value,
+        dateReported: 0,
+        status: "Pending",
+        desc: document.getElementById("createDefects").value,
+        stepsToReproduce: "string",
+        severity: "Low",
+        priority: "Low"
+    }
+    
+    let defectJSON = JSON.stringify(defectInfo);
+
+    let config ={
+        method:"POST",
+        headers:{'Content-Type':"application/json"}, 
+        body: defectJSON
+    }
+
+    let httpResponse = await fetch("https://bugcatcher.coe.revaturelabs.com/7/defects",config);
+    console.log(httpResponse);
+    
+   
+    if (httpResponse.status === 201){
+        alert("Mission Assigned!");
+
+    }else {
+        let responseBody = await httpResponse.json();
+        alert(responseBody.detail);
+    }
+}
+
+function signOut(){
+    window.location.href = "login-page.html"
+}
+
+</script>
+</html>
